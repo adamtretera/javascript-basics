@@ -380,7 +380,6 @@ let age = 18;
 if (drivingLicense && age >= 18) {
   console.log('Můžeš řídit auto!');
 }
-
 ```
 
 - **buď a nebo ||**
