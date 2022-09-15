@@ -2,3 +2,12 @@
     --blue-vercel: #0072F5;
 }
 
+div[layout="image-right"] > .w-full {
+    background-size: contain !important;
+}
+
+tr {
+
+    font-size: 80%;
+    height: 1.4rem;
+}
