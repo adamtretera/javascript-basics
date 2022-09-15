@@ -5,7 +5,7 @@ title: Javascript základy
 ---
 
 # Javascript základy
-Vše potřebné pro vyvoj appky React ⚛️
+Vše potřebné pro vyvoj appky v Reactu ⚛️
 
 
 ---
