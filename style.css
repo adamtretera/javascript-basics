@@ -11,3 +11,7 @@ tr {
     font-size: 80%;
     height: 1.4rem;
 }
+
+code {
+    font-family: "Fira Sans", monospace;
+}

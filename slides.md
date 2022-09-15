@@ -35,7 +35,7 @@ image: ./images/fevsbe.jpeg
 
 ---
 
-# Variables (Promněná) - Boxíky 
+# Variables (Proměnná) - Boxíky 
 - jsou kontejnery které uchovávají nějakou hodnotu
 - místo v paměti počítače
 - **Deklarace** = vytváření nové proměnné
@@ -86,7 +86,7 @@ console.log(pozdrav); // Error
 
 ## Hoisting
 
-- interpreter alokuje paměť pro promněné a deklarace funkcí (**rozdělení deklarace a inicializace**)
+- interpreter alokuje paměť pro proměnné a deklarace funkcí (**rozdělení deklarace a inicializace**)
 - `var = undefined ` - nehodí error
 - `let` a `const` - nebudou vůbec inicializované
 
@@ -153,10 +153,10 @@ alert(vystupDoKonzole)
 
 # Primitives vs Objekty
 
-- To co ukládáme do boxíků (promněných)
+- To co ukládáme do boxíků (proměnných)
 - nejmenším stavebním kamenem v Javascriptu jsou právě primitivy
 - vše, co není **primitiv**, je **objekt** (funkce, pole (array) , sety)
-- Javascript auto wrapper (např. **String**) - vytvoří z primitvu `Objekt.includes()`
+- Javascript auto wrapper (např. **String**) - vytvoří z primitvu `String.includes()`
 
 - `string`
 - `number`
@@ -198,10 +198,11 @@ typeof function() {} // Function (which inherits from Object)
 
 ---
 
-# Práce se stringy
+# Práce se stringy  
 - [String objekt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ```ts
+"" ===  ''
 "Ahoj světe".toLowerCase() === "ahoj světe"
 "Ahoj světe".toUpperCase() === "AHOJ SVĚTE"
 "Ahoj světe".charAt(1)   === "h" // "Ahoj světe"[1] === "h"
@@ -308,16 +309,16 @@ false; // false
 
 
 | Operace | Příklad (true vyrazu) |
-|---------|----------------------|
-| ==      | 2 == "2"             |
-| ===     | 2 === 2              |
-| !=      | 1 != "2"             |
-| !==     | 1 !== 2              |
-| >       | 2 > 1                |
-| >=      | 2 >= 2 , 2 >= 1      |
-| <       | 1 < 2                |
-| <=      | 1 <= 2, 1 <= 1       |
-| !       | negace               |
+|---------|-----------------------|
+| ==      | 2 == "2"              |
+| ===     | 2 === 2               |
+| !=      | 1 != "2"              |
+| !==     | 1 !== 2               |
+| >       | 2 > 1                 |
+| >=      | 2 >= 2 , 2 >= 1       |
+| <       | 1 < 2                 |
+| <=      | 1 <= 2, 1 <= 1        |
+| !       | !false                |
 
 ---
 
@@ -335,7 +336,7 @@ if (username === "Petr Pomalý") {
     console.log(`Jméno je ${username}`)
 } else {
     // kdyby vše nevyšlo
-    console.log(`Jméno je ${username}`)
+    console.log(`Neznáme jméno`)
 }
 
 ```
@@ -373,10 +374,10 @@ switch (operace) {
 
 - **a zároveň &&**
 ```ts
-let řidičák = 'Super nový řidičák';
+let drivingLicense = 'Super nový řidičák';
 let age = 18;
 
-if (řidičák && age >= 18) {
+if (drivingLicense && age >= 18) {
   console.log('Můžeš řídit auto!');
 }
 
@@ -399,7 +400,7 @@ if (level >= 10 || isPremiumAccount) {
 - opakování nějaké akce několikrát
 
 ```ts
-for (prvotníPromněná; podmínka; příkaz) {
+for (prvotníProměnná; podmínka; příkaz) {
     //  Nějaký kód
 }
 ```
@@ -407,6 +408,7 @@ např.a
 ```ts
 while (podmínka) {
     // Nějaký kód
+    příkaz
 }
 ```
 
