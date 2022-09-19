@@ -81,7 +81,22 @@ pozdrav = "Dobrý den!"
 
 console.log(pozdrav); // Error
 ``` 
+---
 
+## Komentáře
+- Proč ? Vysvětlení kódu pro tebe v budoucnosti nebo ostaní developery.
+- inline pomocí `// Komentář na řádek`
+- blokový pomocí `/* Komentář na celý blok kódu */`
+```ts
+let x = 5;      // Deklarace x a inicializace x s hodnotou 5 (vytvoření a uložení hodnoty 5)
+/*
+  např. Tuhle hodnotu neměnit, může způsobit problémi v souboru index.html
+  const IMPORTANT_NUMBER = 5;
+  raději změnte vytvořte novou proměnnou
+*/
+const IMPORTANT_NUMBER = 5;
+
+```
 ---
 
 ## Hoisting
