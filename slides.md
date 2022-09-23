@@ -50,10 +50,9 @@ let povolani = "Zametač frontendových krytin" // Incializace a deklarace
 
 ---
 
-## const vs let vs var
+# Klíčové slova - const vs let vs var
 - dříve `var` (dnes nepoužíváme) - scope ve funkci nebo globální
-
-### const a let - block scoped {} 
+## Co se používá ? - (block scoped) 
 - `let`
 - `const` - signál pro javascript že se hodnota nebude měnit (toto neplatí pro Objekty a Array)
 
@@ -171,7 +170,7 @@ alert(vystupDoKonzole)
 - To co ukládáme do boxíků (proměnných)
 - nejmenším stavebním kamenem v Javascriptu jsou právě primitivy
 - vše, co není **primitiv**, je **objekt** (funkce, pole (array) , sety)
-- Javascript auto wrapper (např. **String**) - vytvoří z primitvu `String.includes()`
+- Javascript auto wrapper (např. **String**) - vytvoří z primitvu Objekt `String.includes()`
 
 - `string`
 - `number`
@@ -213,8 +212,8 @@ typeof function() {} // Function (which inherits from Object)
 
 ---
 
-# Práce se stringy  
-- [String objekt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+# String objekt
+- [MDN - refrence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ```ts
 "" ===  ''
@@ -341,7 +340,9 @@ false; // false
 # Složitější podmínky
 
 ```ts
-let username = "Petr Rychlý"
+// Přihlášení
+
+let username = "Petr Rychlý" 
 
 if (username === "Petr Pomalý") {
     // toto se neprovede
@@ -370,17 +371,29 @@ let plnoletost = vek < 18 ? "neplnoletý" : "plnoletý"
 let operace = '+';
 
 switch (operace) {
+    // v případě že operace je "+"
     case '+':
         vysledek = a + b;
         break;
+    // v případě že operace je "-"    
     case '-':
         vysledek = a - b;
         break;
+    // defaultní hodnota stane se pokdu žádna podmínka nebyla splněna
     default:
         console.error("neznáma operace");
 }
 
 ```
+
+
+---
+
+# Cvičení 🧪
+
+- předělejte kalkulačku která podle operace (+, -, %, *, /) provede danou operaci
+- na konci vypište zda výsledné číslo je negativní (menší než nula) - použijte ternární operátor
+
 
 ---
 
@@ -412,13 +425,14 @@ if (level >= 10 || isPremiumAccount) {
 # Cykly
 - jednoduchá cesta jak něco dělat **opakovaně**
 - opakování nějaké akce několikrát
+- **iterace** - průchod cyklem (1 iterace = 1 průchod)
 
 ```ts
 for (prvotníProměnná; podmínka; příkaz) {
     //  Nějaký kód
 }
 ```
-např.a
+např.
 ```ts
 while (podmínka) {
     // Nějaký kód
@@ -428,20 +442,56 @@ while (podmínka) {
 
 ---
 
-# Příklad
+# Příklad -  for
+
+- opakuje se do té doby dokud není splěna nějaká podmínka
+vytvořený pomocí 3 výrazů 
+- <span class="text-blue-500 font-bold">inicializace</span>
+(např. let i = 0), <span class="text-red-500 font-bold">podmínky</span> (např. i < 9), <span class="text-green-500 font-bold">akce po interaci</span> (např. i++)
+- for(<span class="text-blue-500 font-bold">let i = 0</span>; <span class="text-red-500 font-bold">i < 9</span>; <span class="text-green-500 font-bold">i++</span>)
+
 ```ts
-for (let krok = 0; krok < 5; krok++) {
+for (let krok = 0; krok < 5; krok++) { 
     // Běž 5 krát, od 0 až do 4 po 1
     console.log('Bežím jeden krok');
 }
+
+let jmeno = 'adam';
+
+for (let i = 0; i < jmeno.length; i++) {
+    // jedná se o blok mužeme vkládat libovolný kod např. podmíku
+    if (i === 0) {
+        // pokud se jedná o první interaci (první písmenko)
+        console.log(jmeno[i].toUpperCase()); // vypíšeme velkým znak na pozici i
+    } else {
+        console.log(jmeno[i]); // vypíšeme znak na pozici i
+    }
+}
+
 ```
-nebo
+---
+
+# Příklad -  while
+
 ```ts
 let početZboží = 0;
-while (početZboží < 1) {
+while (početZboží < 1) { // zkontroluju podmínku a teprve poté pokračuji
     console.log(`Máte pouze ${početZboží}`);
     početZboží++
 }
+
+let rokVzniku;
+do {
+    // něco udělám alespoň jednou
+    rokVzniku = prompt("Zadejte rok vzinku JavaScriptu ?");
+} while (rokVzniku !== "1995") // až nyní zkontroluju podmínku
+
+// Infnite loop (nebude fungovat) - JS crashne
+while (true) {
+    console.log('Hello, world!');
+}
+
+
 ```
 
 ---
@@ -450,3 +500,165 @@ while (početZboží < 1) {
 
 - vypišete větu "Mám rád javascript po [**cisloIterace**]!" 8x
 - vypište vaše jméno po zpátku 3x
+
+---
+
+# Array - pole []
+- pro ukládání více hodnot pod jednu proměnnou
+- k hodnotám v poli jsou přiřazeny pozice (**indexy**) od 0
+<Array/>
+
+
+```ts
+
+const nakup = ['chleba', 'mléko', 'sýr', 'nudle', 'káva'];
+console.log(nakup);
+
+```
+
+
+---
+
+# Práce s Arrays (1/2)
+
+```ts
+const nakup = ['chleba', 'mléko', 'sýr', 'nudle', 'káva'];
+```
+
+- **Délka pole** `length`
+```ts 
+console.log(nakup.length);  // 5
+```
+- **Přístup pomocí indexu (pozice)** 
+- 
+```ts
+nakup[0] = 'rohlik'; // console.log(nakup)  ['rohlik', 'mleko', ...]
+```
+
+- **Najít hodnotu** vrací pozici (index) `indexOf()`
+
+```ts
+nakup.indexOf("sýr") // 2
+```
+
+- **Převrácení pořadí**  `reverse()`
+
+```ts
+nakup.reverse() // ["káva", "nudle", "sýr", "mléko", "chleba"]
+```
+
+---
+
+# Práce s Arrays (2/2)
+- **Přidávání hodnot** `push()` a `unshift()`
+
+```ts
+nakup.push("šunka")  // přidá na konec 
+nakup.unshift("čaj")  // přidá na začátek
+```
+
+- **Odebírání hodnot** `pop()` a `shift()`
+
+```ts
+nakup.pop()  // odebere od konce
+nakup.shift()  // odebere od začátku
+```
+
+- **Další...**
+```ts
+[1,2].concat([3,4])  // [1,2,3,4]
+['Adam', 'Tretera'].join()  //  Adam,  Tretera
+```
+---
+
+# Procházení pole
+
+- pomocí cyklů :))
+
+```ts
+const zoo = ['žirafa', 'pes', 'opice', 'zebra', 'lev'];
+
+for (let i = 0; i < zoo.length; i++) {
+  console.log(zoo[i]);
+}
+```
+
+---
+
+# Procházení pole 
+
+```ts
+const zoo = ['žirafa', 'pes', 'opice', 'zebra', 'lev'];
+
+for (const zvire of zoo) {
+  console.log(zoo.indexOf(zvire)); 
+}
+
+for (const zvireIndex in zoo) {
+  console.log(zvireIndex);
+}
+```
+---
+
+# Cvičení 🧪
+1. [3, 5, 7, 8, 11, 12, 13, 16, 17, 18] vypište všechna sudá čísla
+2. Dostanete na vstupu **vaše jméno** ("Adam Tretera") a musíte vypsat iniciály, křestí jméno a příjmení
+
+
+---
+
+
+# Funkce
+- pro rozdělní velkých kusu kodu do malých částí
+- **parametr** je při deklaraci funkce
+- **argument** je při volání funkce bread
+- return defaultně undefined ⇒ ale můžeme nahradit vlastním při použití `return` statementu
+- **hoisted** - můžu přistoupi před deklarací
+  <img class="rounded w-1/2 mt-3" src="/images/img.png"/>
+
+
+
+---
+
+# Funkce
+
+```ts
+function makeLunch() {
+    console.log("🍕")
+    return "🍕"
+}
+
+makeLunch();  // 🍕
+makeLunch();  // 🍕
+makeLunch()  // 🍕
+
+let pizza = makeLunch()
+```
+
+---
+
+# Function expression
+- můžeme přiřadit anonymní nebo jinou funkci k proměnné
+```ts
+// Anonymní funkce
+(function() {
+    console.log("🍕")
+    return "🍕"
+})
+
+
+const makeLunch = function() {
+	console.log("🍕")
+	return "🍕"
+}
+```
+
+
+---
+# Arrow funkce ➡️
+- vždy se zařazují pod proměnou (function expression)
+```ts
+const makeLunch = () => {
+	return "🍕"
+}
+```
