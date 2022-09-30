@@ -623,30 +623,137 @@ for (const zvireIndex in zoo) {
 # Funkce
 
 ```ts
-function makeLunch() {
-    console.log("🍕")
-    return "🍕"
+// vytvořím funkci s názvem makeLunch
+function makeLunch() { 
+    console.log("🍕") // vypíšu do konzole "🍕"
+    return "🍕" // vracím z funkce "🍕"
 }
 
 makeLunch();  // 🍕
 makeLunch();  // 🍕
 makeLunch()  // 🍕
 
-let pizza = makeLunch()
+let pizza = makeLunch() // přiřazuju emoji k proměnné pizza
+```
+---
+
+# Funkce
+```ts
+// vytvořím funkci reverseName s paremetrem name
+function reverseName(name) {
+    // uložím si do proměnné obracené jméno
+    const result = name.split('').reverse().join('');
+    // vracím výsledek
+    return result
+}
+// tady si uložím výsledek který funkce vrátím při poskytnutí argumentu "tonda"
+let tondaReversed = reverseName("tonda")
+
+
+function findIndex(array, element) {
+    for (let i = 0; i <= array.length; i++) {
+        if (element === array[i]) {
+            return i;
+        }
+    }
+}
+
+console.log(findIndex([1, 2, 8, 9], 2)); // 1 (vracím index kde jsem našel hodnotu)
+
+
+
 ```
 
 ---
 
+# Cvičení (co nestihnete je na doma)
+1. Vytvořte funkci, která převede minuty na sekundy 
+```ts
+minToSec(3) // vrátí 180
+minToSec(2) // vrátí 60
+```
+2. Funkci, která bere dva paremery boolean a vrací hondotu true jen v případě že oba parametry byly také true
+```ts
+aZaroven(true, true) // true
+aZaroven(false, true) // false
+```
+3. Vytvoř funkci, která bere dva paremetry např. (x,y) a vrací obsah, pokud jsou zadané špatné argumenty vratí -1
+---
+
+# Objekty
+
+- Objekt  je kolekce vlastností
+- **Property** (vlastnost) je dvojice klíč-hodnota (key - value), která obsahuje název a hodnotu. => proměnná přiřazená k objektu
+- **Property Name** (name)
+- **Property Value** může být jakákoli hodnota, včetně jiných objektů nebo funkcí
+```ts
+
+typeof {} // object
+typeof [] // object
+
+const obj = {} // literal syntax
+obj = new Object() // constructor syntax 
+
+```
+---
+
+# Objekty základy
+- funkce na objektu je methoda
+```ts
+const user = {
+    name: 'Adam',
+    lastname: 'Tretera',
+    id: 88799779,
+    parents: [919233, 12323123],
+    childrens: [],
+    job: function createApp() {
+        return 'Nová appka';
+    },
+    imageUrl: 'google.com',
+};
+
+```
+---
+
+# Objekty základy - práce
+
+```ts
+const clone2 = { ...user };
+
+console.log(clone === user); // false
+
+user.id = 123;
+
+const sugar = { ...original, hola: 'mundo' };
+
+const { name, lastaname } = user;
+
+const users = [
+    {name: "Adam", id: "13"},
+    {name: "Petr", id: "15"},
+    {name: "Petr", id: "19"}
+]
+
+```
+
+
+---
+
 # Function expression
-- můžeme přiřadit anonymní nebo jinou funkci k proměnné
+- **Anonymní funkce** - funkce bez jména
 ```ts
 // Anonymní funkce
 (function() {
     console.log("🍕")
     return "🍕"
 })
+```
 
+- **Function expression**
+- můžeme přiřadit anonymní nebo jinou funkci k proměnné
+- není hoistované
 
+```ts
 const makeLunch = function() {
 	console.log("🍕")
 	return "🍕"
@@ -655,10 +762,44 @@ const makeLunch = function() {
 
 
 ---
+
 # Arrow funkce ➡️
-- vždy se zařazují pod proměnou (function expression)
+- jednoduší zápis funkce
+- Proč ? vkládám funkci jako argument jiné funkci 
+```ts
+(paremetr) => {
+  // výraz
+  return parametr + 100;
+};
+```
+
+
 ```ts
 const makeLunch = () => {
 	return "🍕"
 }
 ```
+---
+
+# Methody na Array
+- berou jako paremtr funkce vetšinou používáme anonymní () => {} arrow funkce
+- vše najdete zde [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) 
+
+
+
+```ts
+const zoo = ['🦁', '🐵', '🐼', '🐝', '🐨'];
+
+
+zoo.forEach((animal) => console.log(animal)); // co se má stát pro každý item (vrací undefined)
+const zviratka_s_trickem = zoo.map((item) => item + '👕'); // vrací novou array
+const jenomPandy = zoo.filter((item) => item === '🐼'); // vrací novou array
+const majiTricka = zoo.every((item) => item.includes('👕')); // false  (platí pro všechny ?)
+const indexOpice = zoo.find((item) => item === '🐵'); // 1 //vratí první vyhovující
+```
+
+
+---
+
+# Bonus
+
